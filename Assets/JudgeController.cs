@@ -27,7 +27,7 @@ public class JudgeController : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other){
-        if(other.gameObject.tag == "roundTag"){
+        if(other.gameObject.tag == "roundTag" && Input.GetMouseButtonDown(0)){
             if(Input.GetMouseButtonDown(0)){
                 this.point += 10;
                 this.pointText.GetComponent<Text>().text = this.point + "ポイント";
