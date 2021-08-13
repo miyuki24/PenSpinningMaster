@@ -9,6 +9,7 @@ public class RoundController : MonoBehaviour
     //消滅位置
     private float deadline = -10.0f;
     private int point = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,7 @@ public class RoundController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Vector3.right=1,0,0で初めから定義
+        //Vector3.right=1,0,0で初めから定義されている。X軸の値だけを簡単に動かせる
         transform.Translate(Vector3.right * this.speed * Time.deltaTime);
         //画面外にでたら
         if(transform.position.x < this.deadline){

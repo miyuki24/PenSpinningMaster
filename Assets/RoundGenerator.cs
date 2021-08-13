@@ -16,6 +16,7 @@ public class RoundGenerator : MonoBehaviour
     //円の生成位置（Y座標）
     private float genPosY = 3.5f;
 
+    private int[] itemNumber = new int[3];
     // Start is called before the first frame update
     void Start()
     {
