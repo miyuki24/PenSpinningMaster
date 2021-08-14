@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MissingController : MonoBehaviour
 {
+    public JudgeController judgeController;
     // Start is called before the first frame update
     void Start()
     {
