@@ -17,8 +17,7 @@ public class MissingController : MonoBehaviour
         
     }
 
-    void OnTriggerStay2D(Collider2D other){
-        JudgeController judgeController = new JudgeController();
+    void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag == "roundTag"){
             judgeController.missCount += 1;
             if(judgeController.missCount == 3){

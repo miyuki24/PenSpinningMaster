@@ -39,8 +39,6 @@ public class JudgeController : MonoBehaviour
         image_component1.enabled = false;
         image_component2.enabled = false;
         image_component3.enabled = false;
-
-        Debug.Log(image_component1);
     }
 
     // Update is called once per frame
