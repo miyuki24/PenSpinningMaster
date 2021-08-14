@@ -20,6 +20,8 @@ public class JudgeController : MonoBehaviour
     private Image image_component3;
 
     public int missCount = 0;
+
+    public MissingController missingController;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,8 @@ public class JudgeController : MonoBehaviour
         image_component1.enabled = false;
         image_component2.enabled = false;
         image_component3.enabled = false;
+
+        Debug.Log(image_component1);
     }
 
     // Update is called once per frame

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MissingController : JudgeController
+public class MissingController : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
