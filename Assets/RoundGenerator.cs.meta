@@ -3,7 +3,12 @@ guid: eb6ccea875e864f96867cbbf61a12238
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - roundPrefab: {fileID: 829130378673509909, guid: ebd5cfb8ca82f481ca450436c7535611,
+      type: 3}
+  - falseRoundPrefab: {fileID: 3884595846729578256, guid: 44734e84d5736477891e49a3802d5941,
+      type: 3}
+  - gameManager: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

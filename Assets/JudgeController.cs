@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class JudgeController : MonoBehaviour
 {
-    public bool isGameOver = false;
+
     private GameObject pointText;
-    private int point = 0;
+    public int point = 0;
     private GameObject round;
     private GameObject falseRound;
     private GameObject gameOverText;
@@ -19,9 +19,14 @@ public class JudgeController : MonoBehaviour
     private Image image_component2;
     private Image image_component3;
 
+    public bool isGameOver = false;
+    public bool isGameClear = false;
     public int missCount = 0;
 
-    public MissingController missingController;
+    private float mouseClickedTime = 0.0f;
+
+    public RoundGenerator roundGenerator;
+    public GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +53,20 @@ public class JudgeController : MonoBehaviour
             this.gameOverText.GetComponent<Text>().text = "ゲームオーバー";
             Invoke("GameOver",2.0f);
         }
+
+        if(this.isGameClear == true){
+            Debug.Log("ゲームクリア");
+        }
+
+        //マウスがクリックされたら一定時間roundTagが呼ばれる(「クリックが押されたら」の条件を「クリックしている間の値」として保持しておく) 
+		if(Input.GetMouseButtonDown(0)){
+            //値が代入される
+			mouseClickedTime = 0.1f;
+		}
+		//時間の経過ともにmouseClickedTimeが減少
+		if(mouseClickedTime > 0.0f){
+			mouseClickedTime -= Time.deltaTime;
+		}
     }
 
     public void GameOver(){
@@ -68,19 +87,26 @@ public class JudgeController : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other){
         if(other.gameObject.tag == "roundTag"){
-            if(Input.GetMouseButtonDown(0)){
+			//マウスがクリックされた瞬間の付近のとき。OnTriggerStay2DとGetMouseButtonDownは相性が悪いため、それぞれ別の場所で管理する。
+            if(mouseClickedTime > 0.0f){
                 this.point += 10;
                 this.pointText.GetComponent<Text>().text = this.point + "ポイント";
-                GameObject miss = GameObject.FindGameObjectWithTag("roundTag");
-                Destroy(miss);
+                if(roundGenerator.roundNumber == gameManager.maxRound){
+                    this.isGameClear = true;
+                }
+                //当たったオブジェクトを消去。OnTriggerStay2Dの引数に入っているオブジェクトを削除する
+				Destroy(other.gameObject);
             }
         }else if(other.gameObject.tag == "falseRoundTag"){
-            if(Input.GetMouseButtonDown(0)){
+            if(mouseClickedTime > 0.0f){
                 missCount += 1;
                 if(missCount == 3){
                     this.isGameOver = true;
                 }
                 MissCount();
+                if(roundGenerator.roundNumber == gameManager.maxRound){
+                    this.isGameClear = true;
+                }
             }
         }
     }

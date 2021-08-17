@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//過ぎていったオブジェクトに対する処理
 public class MissingController : MonoBehaviour
 {
     public JudgeController judgeController;
+    public RoundGenerator roundGenerator;
+    public GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +27,9 @@ public class MissingController : MonoBehaviour
                 judgeController.isGameOver = true;
             }
             judgeController.MissCount();
+            if(roundGenerator.roundNumber == gameManager.maxRound){
+                judgeController.isGameClear = true;
+            }
         }
     }
 }

@@ -16,11 +16,24 @@ public class RoundGenerator : MonoBehaviour
     //円の生成位置（Y座標）
     private float genPosY = 3.5f;
 
-    private int[] itemNumber = new int[3];
+    //現在のroundの番号
+    public int roundNumber;
+    private float deadline = -10.0f;
+
+    //カウントダウン
+    private float countDownDelta = 0;
+    private float countDownSpan = 1.0f;
+
+    public GameManager gameManager;
+
+    void CountDown(){
+        
+    }
     // Start is called before the first frame update
     void Start()
     {
         
+        roundNumber = 0;
     }
 
     // Update is called once per frame
@@ -28,15 +41,34 @@ public class RoundGenerator : MonoBehaviour
     {
         this.delta += Time.deltaTime;
         int num = Random.Range(1,11);
-        if(this.delta > this.span){
-            this.delta = 0;
-            if(num <= 2){
-                GameObject falseRound = Instantiate(falseRoundPrefab);
-                falseRound.transform.position = new Vector2(this.genPosX, this.genPosY);
-            }else if(num >= 3 && num <= 9){
-                GameObject trueRound = Instantiate(roundPrefab);
-                trueRound.transform.position = new Vector2(this.genPosX, this.genPosY);
+        //Debug.Log(gameManager.maxRound);
+        if(this.roundNumber < gameManager.maxRound){
+            if(this.delta > this.span){
+                this.delta = 0;
+                if(num <= 2){
+                    //必要な値をRoundGeneratorでRoundControllerにGetComponentのroundControllerで渡す。roundController内の変数に値を設定してあげる。
+                    GameObject falseRound = Instantiate(falseRoundPrefab);
+                    falseRound.GetComponent<RoundController>().speed = gameManager.speed;
+                    falseRound.transform.position = new Vector2(this.genPosX, this.genPosY);
+                }else if(num >= 3 && num <= 9){
+                    GameObject trueRound = Instantiate(roundPrefab);
+                    trueRound.GetComponent<RoundController>().speed = gameManager.speed;
+                    trueRound.transform.position = new Vector2(this.genPosX, this.genPosY);
+                }
+                roundNumber += 1;
+                //Debug.Log(num);
+                //Debug.Log(roundNumber);
+                //Debug.Log(gameManager.maxRound);
             }
+            Debug.Log(num);
+
+        }
+        if(this.roundNumber == gameManager.maxRound){
+            Debug.Log("ゲームクリアした！");
+        }
+        this.transform.Translate(Vector3.right * gameManager.speed * Time.deltaTime);
+        if(transform.position.x < this.deadline){
+            Destroy(this.gameObject);
         }
     }
 }
