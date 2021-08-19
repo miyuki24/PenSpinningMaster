@@ -10,7 +10,7 @@ public class RoundGenerator : MonoBehaviour
     //時間計測用の変数
     private float delta = 0;
     //円の生成間隔
-    private float span = 0.5f;
+    //private float span = 0.5f;
     //円の生成位置（X座標）
     private float genPosX = 10.0f;
     //円の生成位置（Y座標）
@@ -42,7 +42,7 @@ public class RoundGenerator : MonoBehaviour
         this.delta += Time.deltaTime;
         int num = Random.Range(1,11);
         if(this.roundNumber < gameManager.maxRound){
-            if(this.delta > this.span){
+            if(this.delta >= gameManager.generationSpan){
                 this.delta = 0;
                 if(num <= 2){
                     //必要な値をRoundGeneratorでRoundControllerにGetComponentのroundControllerで渡す。roundController内の変数に値を設定してあげる。
@@ -55,11 +55,10 @@ public class RoundGenerator : MonoBehaviour
                     trueRound.transform.position = new Vector2(this.genPosX, this.genPosY);
                 }
                 roundNumber += 1;
+                if(this.roundNumber == gameManager.maxRound){
+                    this.tag = "finalRoundTag";
+                }
             }
-
-        }
-        if(this.roundNumber == gameManager.maxRound){
-            //Debug.Log("ゲームクリアした！");
         }
     }
 }

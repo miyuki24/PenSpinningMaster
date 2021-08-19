@@ -87,9 +87,6 @@ public class JudgeController : MonoBehaviour
             if(mouseClickedTime > 0.0f){
                 this.point += 10;
                 this.pointText.GetComponent<Text>().text = this.point + "ポイント";
-                if(roundGenerator.roundNumber == gameManager.maxRound){
-                    this.isGameClear = true;
-                }
                 //当たったオブジェクトを消去。OnTriggerStay2Dの引数に入っているオブジェクトを削除する
 				Destroy(other.gameObject);
             }
@@ -105,5 +102,6 @@ public class JudgeController : MonoBehaviour
                 }
             }
         }
+
     }
 }

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private int level;
     public float speed;
     public int maxRound;
+    public float generationSpan;
 
     private float delta = 0;
     private float span = 1.0f;
@@ -18,13 +19,25 @@ public class GameManager : MonoBehaviour
 
     private GameObject levelText;
     private Text textComponent;
+
+    private GameObject countDownImage;
+    private Image image_component;
+
+    public Sprite countDown1;
+    public Sprite countDown2;
+    public Sprite countDown3;
+
+    private float countDownDelta = 0;
     // Start is called before the first frame update
     void Start()
     {
         this.speed = -4.0f;
         this.maxRound = 20;
+        this.generationSpan = 0.5f;
         this.levelText = GameObject.Find("level");
         this.textComponent = levelText.GetComponent<Text>();
+        this.countDownImage = GameObject.Find("countDownImage");
+        this.image_component = countDownImage.GetComponent<Image>(); 
     }
 
     // Update is called once per frame
@@ -33,7 +46,21 @@ public class GameManager : MonoBehaviour
         if(judgeController.isGameClear == true){
             levelClear();
             levelCount();
-            Debug.Log("ゲームがクリアした");
+        }
+        CountDown();
+    }
+
+    void CountDown(){
+        Debug.Log("カウントダウン関数が呼ばれた");
+        image_component.sprite = countDown3;
+        countDownDelta += Time.deltaTime;
+        if(countDownDelta > 3.0f){
+            image_component.enabled = false;
+        } else if(countDownDelta > 2.0f){
+            image_component.sprite = countDown1;
+        } else if(countDownDelta > 1.0f){
+            image_component.sprite = countDown2;
+            Debug.Log("カウントダウン1秒経過");
         }
     }
 
@@ -45,7 +72,6 @@ public class GameManager : MonoBehaviour
             judgeController.isGameClear = false;
             delta = 0;
             level += 1;
-            Debug.Log("delta>spanが呼ばれた");
         }
     }
 
@@ -53,10 +79,12 @@ public class GameManager : MonoBehaviour
         if(level == 1){
             this.speed = -8.0f;
             this.maxRound = 40;
+            this.generationSpan = 0.25f;
         }
         if(level == 2){
             this.speed = -12.0f;
             this.maxRound = 60;
+            this.generationSpan = 0.125f;
         }  
     }
 }
