@@ -41,7 +41,6 @@ public class RoundGenerator : MonoBehaviour
     {
         this.delta += Time.deltaTime;
         int num = Random.Range(1,11);
-        //Debug.Log(gameManager.maxRound);
         if(this.roundNumber < gameManager.maxRound){
             if(this.delta > this.span){
                 this.delta = 0;
@@ -56,19 +55,11 @@ public class RoundGenerator : MonoBehaviour
                     trueRound.transform.position = new Vector2(this.genPosX, this.genPosY);
                 }
                 roundNumber += 1;
-                //Debug.Log(num);
-                //Debug.Log(roundNumber);
-                //Debug.Log(gameManager.maxRound);
             }
-            Debug.Log(num);
 
         }
         if(this.roundNumber == gameManager.maxRound){
-            Debug.Log("ゲームクリアした！");
-        }
-        this.transform.Translate(Vector3.right * gameManager.speed * Time.deltaTime);
-        if(transform.position.x < this.deadline){
-            Destroy(this.gameObject);
+            //Debug.Log("ゲームクリアした！");
         }
     }
 }

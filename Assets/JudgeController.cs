@@ -54,10 +54,6 @@ public class JudgeController : MonoBehaviour
             Invoke("GameOver",2.0f);
         }
 
-        if(this.isGameClear == true){
-            Debug.Log("ゲームクリア");
-        }
-
         //マウスがクリックされたら一定時間roundTagが呼ばれる(「クリックが押されたら」の条件を「クリックしている間の値」として保持しておく) 
 		if(Input.GetMouseButtonDown(0)){
             //値が代入される

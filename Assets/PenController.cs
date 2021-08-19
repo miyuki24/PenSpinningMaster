@@ -5,7 +5,7 @@ using UnityEngine;
 public class PenController : MonoBehaviour
 {
     //ペンの回転速度
-    private float rotSpeed = 5.0f;
+    private float rotSpeed = 10.0f;
     private float highestAngleZ = 0;
     private bool isRotation = false;
     // Start is called before the first frame update
