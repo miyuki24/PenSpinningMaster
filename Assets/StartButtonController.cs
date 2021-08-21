@@ -1,12 +1,10 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class RetrySceneController : MonoBehaviour
+public class StartButtonController : MonoBehaviour
 {
-
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +16,8 @@ public class RetrySceneController : MonoBehaviour
     {
         
     }
-    public void GetDoButtonDown(){
+
+    public void GetStartButton(){
         SceneManager.LoadScene("SampleScene");
-    }
-    public void GetDoNotButtonDown(){
-        SceneManager.LoadScene("TitleScene");
     }
 }

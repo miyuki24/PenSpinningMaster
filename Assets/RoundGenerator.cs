@@ -9,8 +9,6 @@ public class RoundGenerator : MonoBehaviour
     public GameObject falseRoundPrefab;
     //時間計測用の変数
     private float delta = 0;
-    //円の生成間隔
-    //private float span = 0.5f;
     //円の生成位置（X座標）
     private float genPosX = 10.0f;
     //円の生成位置（Y座標）
@@ -32,7 +30,7 @@ public class RoundGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //現在のラウンドオブジェクトの数。生成するための記録する変数。最後かどうかタイミングでわからない。その場で大量に生成された場合、roundNumberとmaxRoundがその場で等しくなってしまう。各オブジェクトが何個目のオブジェクトなのかはわからない。
         roundNumber = 0;
     }
 
@@ -49,14 +47,12 @@ public class RoundGenerator : MonoBehaviour
                     GameObject falseRound = Instantiate(falseRoundPrefab);
                     falseRound.GetComponent<RoundController>().speed = gameManager.speed;
                     falseRound.transform.position = new Vector2(this.genPosX, this.genPosY);
+                    this.roundNumber += 1;
                 }else if(num >= 3 && num <= 9){
                     GameObject trueRound = Instantiate(roundPrefab);
                     trueRound.GetComponent<RoundController>().speed = gameManager.speed;
                     trueRound.transform.position = new Vector2(this.genPosX, this.genPosY);
-                }
-                roundNumber += 1;
-                if(this.roundNumber == gameManager.maxRound){
-                    this.tag = "finalRoundTag";
+                    this.roundNumber += 1;
                 }
             }
         }

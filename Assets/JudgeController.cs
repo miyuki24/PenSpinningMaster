@@ -89,6 +89,11 @@ public class JudgeController : MonoBehaviour
                 this.pointText.GetComponent<Text>().text = this.point + "ポイント";
                 //当たったオブジェクトを消去。OnTriggerStay2Dの引数に入っているオブジェクトを削除する
 				Destroy(other.gameObject);
+                gameManager.finishRoundNumber += 1;
+                //RoundControllerに何番目のRoundかの値を持たせる。maxRoundとの比較。RoundControllerに何番目のオブジェクトを持つ変数を用意する。tagの代わりになる背番号の役割。何番目のオブジェクトか。
+                if(gameManager.finishRoundNumber == gameManager.maxRound){
+                    this.isGameClear = true;
+                }
             }
         }else if(other.gameObject.tag == "falseRoundTag"){
             if(mouseClickedTime > 0.0f){
@@ -97,11 +102,11 @@ public class JudgeController : MonoBehaviour
                     this.isGameOver = true;
                 }
                 MissCount();
-                if(roundGenerator.roundNumber == gameManager.maxRound){
+                gameManager.finishRoundNumber += 1;
+                if(gameManager.finishRoundNumber == gameManager.maxRound){
                     this.isGameClear = true;
                 }
             }
         }
-
     }
 }

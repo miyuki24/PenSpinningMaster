@@ -6,12 +6,12 @@ public class RoundController : MonoBehaviour
 {
     //消滅位置。変数をpublicか関数を作るか
     private float deadline = -10.0f; 
-    
     //public GameManager gameManager;
     public float speed;
     // Start is called before the first frame update
     void Start()
     {
+        
     }
 
     // Update is called once per frame

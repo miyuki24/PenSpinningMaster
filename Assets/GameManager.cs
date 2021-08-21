@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     public Sprite countDown2;
     public Sprite countDown3;
 
+    public int finishRoundNumber = 0;
+
     private float countDownDelta = 0;
     // Start is called before the first frame update
     void Start()
@@ -45,13 +47,15 @@ public class GameManager : MonoBehaviour
     {
         if(judgeController.isGameClear == true){
             levelClear();
-            levelCount();
+            //levelCount();
+            finishRoundNumber = 0;
+            level += 1;
+            judgeController.isGameClear = false;
         }
         CountDown();
     }
 
     void CountDown(){
-        Debug.Log("カウントダウン関数が呼ばれた");
         image_component.sprite = countDown3;
         countDownDelta += Time.deltaTime;
         if(countDownDelta > 3.0f){
@@ -60,7 +64,6 @@ public class GameManager : MonoBehaviour
             image_component.sprite = countDown1;
         } else if(countDownDelta > 1.0f){
             image_component.sprite = countDown2;
-            Debug.Log("カウントダウン1秒経過");
         }
     }
 
@@ -69,22 +72,28 @@ public class GameManager : MonoBehaviour
         this.levelText.GetComponent<Text>().text = "レベル" + (level + 2);
         if(delta > span){
             textComponent.enabled = false;
-            judgeController.isGameClear = false;
+            //judgeController.isGameClear = false;
             delta = 0;
-            level += 1;
+            //level += 1;
+            levelCount();
         }
     }
 
     void levelCount(){
+        Debug.Log("LevelCountが呼ばれた");
         if(level == 1){
             this.speed = -8.0f;
             this.maxRound = 40;
             this.generationSpan = 0.25f;
+            Debug.Log(speed);
+            Debug.Log(maxRound);
+            Debug.Log(generationSpan);
         }
         if(level == 2){
             this.speed = -12.0f;
             this.maxRound = 60;
             this.generationSpan = 0.125f;
+            Debug.Log("レベル2も呼ばれている");
         }  
     }
 }

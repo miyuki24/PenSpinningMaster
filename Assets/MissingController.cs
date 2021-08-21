@@ -27,7 +27,13 @@ public class MissingController : MonoBehaviour
                 judgeController.isGameOver = true;
             }
             judgeController.MissCount();
-            if(roundGenerator.roundNumber == gameManager.maxRound){
+            gameManager.finishRoundNumber += 1;
+            if(gameManager.finishRoundNumber == gameManager.maxRound){
+                judgeController.isGameClear = true;
+            }
+        } else if(other.gameObject.tag == "falseRoundTag"){
+            gameManager.finishRoundNumber += 1;
+            if(gameManager.finishRoundNumber == gameManager.maxRound){
                 judgeController.isGameClear = true;
             }
         }
