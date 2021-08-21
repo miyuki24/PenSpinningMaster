@@ -290,6 +290,8 @@ MonoBehaviour:
   countDown1: {fileID: 21300000, guid: d974dd151241b4afc93d421b64b3fce5, type: 3}
   countDown2: {fileID: 21300000, guid: a7e89fb895d874b4e9c198e96604dd09, type: 3}
   countDown3: {fileID: 21300000, guid: f336ede959ac24f8faa52a49f33bb9ba, type: 3}
+  finishRoundNumber: 0
+  roundGenerator: {fileID: 849201100}
 --- !u!1 &280463582
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +344,8 @@ MonoBehaviour:
   countDown1: {fileID: 21300000, guid: d974dd151241b4afc93d421b64b3fce5, type: 3}
   countDown2: {fileID: 21300000, guid: a7e89fb895d874b4e9c198e96604dd09, type: 3}
   countDown3: {fileID: 21300000, guid: f336ede959ac24f8faa52a49f33bb9ba, type: 3}
+  finishRoundNumber: 0
+  roundGenerator: {fileID: 849201100}
 --- !u!1 &293380678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,7 +1127,6 @@ MonoBehaviour:
   missCount: 0
   roundGenerator: {fileID: 849201100}
   gameManager: {fileID: 280463584}
-  roundController: {fileID: 0}
 --- !u!50 &912611539
 Rigidbody2D:
   serializedVersion: 4

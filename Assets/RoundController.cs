@@ -18,7 +18,7 @@ public class RoundController : MonoBehaviour
     void Update()
     {
         //Vector3.right=1,0,0で初めから定義されている。X軸の値だけを簡単に動かせる
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        transform.Translate(Vector3.right * this.speed * Time.deltaTime);
         //画面外にでたら
         if(transform.position.x < this.deadline){
             Destroy(this.gameObject);
