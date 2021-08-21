@@ -206,7 +206,6 @@ GameObject:
   - component: {fileID: 274055364}
   - component: {fileID: 274055366}
   - component: {fileID: 274055365}
-  - component: {fileID: 274055367}
   m_Layer: 5
   m_Name: countDownImage
   m_TagString: Untagged
@@ -270,28 +269,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274055363}
   m_CullTransparentMesh: 0
---- !u!114 &274055367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274055363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a926244102b4f4963bbada8b04cd2f84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  maxRound: 0
-  generationSpan: 0
-  judgeController: {fileID: 912611538}
-  roundController: {fileID: 0}
-  countDown1: {fileID: 21300000, guid: d974dd151241b4afc93d421b64b3fce5, type: 3}
-  countDown2: {fileID: 21300000, guid: a7e89fb895d874b4e9c198e96604dd09, type: 3}
-  countDown3: {fileID: 21300000, guid: f336ede959ac24f8faa52a49f33bb9ba, type: 3}
-  finishRoundNumber: 0
-  roundGenerator: {fileID: 849201100}
 --- !u!1 &280463582
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,7 +599,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.8980392, g: 0.6117647, b: 0.6901961, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1371,7 +1348,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bb5b49293a9564a7b950c00dc6d5c939, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 1
   Mute: 0

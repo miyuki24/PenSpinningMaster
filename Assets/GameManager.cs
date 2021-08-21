@@ -77,24 +77,20 @@ public class GameManager : MonoBehaviour
             levelCount();
             level += 1;
             judgeController.isGameClear = false;
-            //roundGenerator.roundNumber = 0;
+            roundGenerator.roundNumber = 0;
         }
     }
 
     void levelCount(){
         if(level == 1){
-            roundGenerator.roundNumber = 0;
             this.speed = -8.0f;
             this.maxRound = 40;
             this.generationSpan = 0.25f;
-            
         }
         if(level == 2){
-            roundGenerator.roundNumber = 0;
             this.speed = -12.0f;
             this.maxRound = 60;
             this.generationSpan = 0.125f;
-            
         }  
     }
 }

@@ -102,6 +102,7 @@ public class JudgeController : MonoBehaviour
                     this.isGameOver = true;
                 }
                 MissCount();
+                Destroy(other.gameObject);
                 gameManager.finishRoundNumber += 1;
                 if(gameManager.finishRoundNumber == gameManager.maxRound){
                     this.isGameClear = true;
