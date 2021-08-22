@@ -18,7 +18,7 @@ public class OpeningController : MonoBehaviour
     void Start()
     {
         this.gameObject = GameObject.Find("TitleSceneController");
-        this.titleSceneController = gameObject.GetComponent<TitleSceneController>();
+        //this.titleSceneController = gameObject.GetComponent<TitleSceneController>();
         this.talkText = GameObject.Find("Talk");
         this.text_component = talkText.GetComponent<Text>();
         this.text_component.text = "キーンコーンカーンコーン\n先生：お〜い、授業はじめるぞ〜\n生徒：よろしくお願いします";
@@ -38,10 +38,10 @@ public class OpeningController : MonoBehaviour
         if(this.clickTimes == 2){
             text_component.text = "生徒A：もちろん種目は〜\n生徒A・あなた：ペンまわし！\nあなた：記録更新でペン回師に俺はなる！";
         }
-        if(this.clickTimes == 3 && titleSceneController.storyOnly == false){
-            SceneManager.LoadScene("SampleScene");
+        if(this.clickTimes == 3 && TitleSceneController.storyOnly == false){
+            SceneManager.LoadScene("RuleScene");
         }
-        if(this.clickTimes == 3 && titleSceneController.storyOnly == true){
+        if(this.clickTimes == 3 && TitleSceneController.storyOnly == true){
             SceneManager.LoadScene("TitleScene");
         }
     }

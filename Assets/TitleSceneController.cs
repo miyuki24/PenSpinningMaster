@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class TitleSceneController : MonoBehaviour
 {
-    public bool storyOnly = false;
+    public static bool storyOnly = false;
     // Start is called before the first frame update
     void Start()
     {
