@@ -70,12 +70,14 @@ public class GameManager : MonoBehaviour
     void levelClear(){
         delta += Time.deltaTime;
         this.levelText.GetComponent<Text>().text = "レベル" + (level + 2);
+        if(judgeController.isGameOver){
+            textComponent.enabled = false;
+        }
         if(delta > span){
             textComponent.enabled = false;
             delta = 0;
-            Debug.Log("level" + level);
-            levelCount();
             level += 1;
+            levelCount();
             judgeController.isGameClear = false;
             roundGenerator.roundNumber = 0;
         }
@@ -83,14 +85,14 @@ public class GameManager : MonoBehaviour
 
     void levelCount(){
         if(level == 1){
-            this.speed = -8.0f;
-            this.maxRound = 40;
-            this.generationSpan = 0.25f;
+            this.speed = -6.5f;
+            this.maxRound = 30;
+            this.generationSpan = 0.3f;
         }
         if(level == 2){
-            this.speed = -12.0f;
-            this.maxRound = 60;
-            this.generationSpan = 0.125f;
+            this.speed = -9.0f;
+            this.maxRound = 50;
+            this.generationSpan = 0.15f;
         }  
     }
 }
