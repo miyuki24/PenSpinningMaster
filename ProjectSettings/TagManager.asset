@@ -6,6 +6,8 @@ TagManager:
   tags:
   - roundTag
   - falseRoundTag
+  - judgeController
+  - titleSceneController
   layers:
   - Default
   - TransparentFX

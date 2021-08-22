@@ -10,10 +10,15 @@ public class OpeningController : MonoBehaviour
     private GameObject talkText;
     private Text text_component;
 
-    public TitleSceneController titleSceneController;
+    private GameObject gameObject;
+    private TitleSceneController titleSceneController;
+
+    //public TitleSceneController titleSceneController;
     // Start is called before the first frame update
     void Start()
     {
+        this.gameObject = GameObject.Find("TitleSceneController");
+        this.titleSceneController = gameObject.GetComponent<TitleSceneController>();
         this.talkText = GameObject.Find("Talk");
         this.text_component = talkText.GetComponent<Text>();
         this.text_component.text = "キーンコーンカーンコーン\n先生：お〜い、授業はじめるぞ〜\n生徒：よろしくお願いします";
